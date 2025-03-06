@@ -62,6 +62,20 @@
             margin-bottom: 1rem;
             border-radius: 5px;
             background-color: #FFFFFF;
+            transition: background-color 0.3s;
+        }
+        .aula.completed {
+            background-color: #E6F4EA;
+        }
+        .aula-header {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .aula-header input[type="checkbox"] {
+            width: 1.2rem;
+            height: 1.2rem;
+            cursor: pointer;
         }
         h2 {
             font-size: 1.5rem;
@@ -77,7 +91,10 @@
             color: #C72A81;
             border-left: 4px solid #F5A623;
             padding-left: 0.5rem;
-            margin: 0.5rem 0;
+            margin: 0;
+        }
+        .completed h3 {
+            text-decoration: line-through;
         }
         ul {
             margin: 0.5rem 0;
@@ -91,6 +108,9 @@
                 display: block;
             }
             .nav-buttons {
+                display: none;
+            }
+            .aula-header input[type="checkbox"] {
                 display: none;
             }
             .nivel {
@@ -161,8 +181,11 @@
     <div class="nivel" id="basico">
         <h2>Nível Básico</h2>
 
-        <div class="aula">
-            <h3>Aula 1: Conhecendo o Computador</h3>
+        <div class="aula" data-aula-id="basico-aula-1">
+            <div class="aula-header">
+                <input type="checkbox" onchange="toggleCompleted('basico-aula-1')">
+                <h3>Aula 1: Conhecendo o Computador</h3>
+            </div>
             <p><strong>Objetivo:</strong> Identificar componentes e ligar/desligar o computador.</p>
             <p><strong>Passo a Passo:</strong></p>
             <ul>
@@ -183,8 +206,11 @@
             <p><strong>Avaliação:</strong> Ligar/desligar sem ajuda; (extra) abrir e fechar programas.</p>
         </div>
 
-        <div class="aula">
-            <h3>Aula 2: Usando o Mouse e o Teclado</h3>
+        <div class="aula" data-aula-id="basico-aula-2">
+            <div class="aula-header">
+                <input type="checkbox" onchange="toggleCompleted('basico-aula-2')">
+                <h3>Aula 2: Usando o Mouse e o Teclado</h3>
+            </div>
             <p><strong>Objetivo:</strong> Aprender movimentos básicos.</p>
             <p><strong>Passo a Passo:</strong></p>
             <ul>
@@ -204,8 +230,11 @@
             <p><strong>Avaliação:</strong> Linha desenhada e "oi" digitado; (extra) desenho salvo.</p>
         </div>
 
-        <div class="aula">
-            <h3>Aula 3: O que é a Internet?</h3>
+        <div class="aula" data-aula-id="basico-aula-3">
+            <div class="aula-header">
+                <input type="checkbox" onchange="toggleCompleted('basico-aula-3')">
+                <h3>Aula 3: O que é a Internet?</h3>
+            </div>
             <p><strong>Objetivo:</strong> Entender o conceito básico.</p>
             <p><strong>Passo a Passo:</strong></p>
             <ul>
@@ -225,8 +254,11 @@
             <p><strong>Avaliação:</strong> Abrir navegador; (extra) navegar nas imagens.</p>
         </div>
 
-        <div class="aula">
-            <h3>Aula 4: Primeiros Passos na Navegação</h3>
+        <div class="aula" data-aula-id="basico-aula-4">
+            <div class="aula-header">
+                <input type="checkbox" onchange="toggleCompleted('basico-aula-4')">
+                <h3>Aula 4: Primeiros Passos na Navegação</h3>
+            </div>
             <p><strong>Objetivo:</strong> Usar um navegador básico.</p>
             <p><strong>Passo a Passo:</strong></p>
             <ul>
@@ -246,8 +278,11 @@
             <p><strong>Avaliação:</strong> Navegar entre páginas; (extra) explorar site.</p>
         </div>
 
-        <div class="aula">
-            <h3>Aula 5: Comportamento Online - Primeiras Regras</h3>
+        <div class="aula" data-aula-id="basico-aula-5">
+            <div class="aula-header">
+                <input type="checkbox" onchange="toggleCompleted('basico-aula-5')">
+                <h3>Aula 5: Comportamento Online - Primeiras Regras</h3>
+            </div>
             <p><strong>Objetivo:</strong> Conhecer regras básicas de comportamento.</p>
             <p><strong>Passo a Passo:</strong></p>
             <ul>
@@ -268,8 +303,11 @@
             <p><strong>Avaliação:</strong> Mensagem segue regras; (extra) resposta educada.</p>
         </div>
 
-        <div class="aula">
-            <h3>Aula 6: Segurança - O que Não Fazer</h3>
+        <div class="aula" data-aula-id="basico-aula-6">
+            <div class="aula-header">
+                <input type="checkbox" onchange="toggleCompleted('basico-aula-6')">
+                <h3>Aula 6: Segurança - O que Não Fazer</h3>
+            </div>
             <p><strong>Objetivo:</strong> Identificar ações perigosas online.</p>
             <p><strong>Passo a Passo:</strong></p>
             <ul>
@@ -290,8 +328,11 @@
             <p><strong>Avaliação:</strong> Identificação correta; (extra) link criado.</p>
         </div>
 
-        <div class="aula">
-            <h3>Aula 7: Pesquisa Simples no Google</h3>
+        <div class="aula" data-aula-id="basico-aula-7">
+            <div class="aula-header">
+                <input type="checkbox" onchange="toggleCompleted('basico-aula-7')">
+                <h3>Aula 7: Pesquisa Simples no Google</h3>
+            </div>
             <p><strong>Objetivo:</strong> Fazer uma busca básica.</p>
             <p><strong>Passo a Passo:</strong></p>
             <ul>
@@ -312,8 +353,11 @@
             <p><strong>Avaliação:</strong> Conseguir realizar busca; (extra) pesquisa livre.</p>
         </div>
 
-        <div class="aula">
-            <h3>Aula 8: Reconhecendo Sites Seguros</h3>
+        <div class="aula" data-aula-id="basico-aula-8">
+            <div class="aula-header">
+                <input type="checkbox" onchange="toggleCompleted('basico-aula-8')">
+                <h3>Aula 8: Reconhecendo Sites Seguros</h3>
+            </div>
             <p><strong>Objetivo:</strong> Identificar sites confiáveis.</p>
             <p><strong>Passo a Passo:</strong></p>
             <ul>
@@ -334,8 +378,11 @@
             <p><strong>Avaliação:</strong> Apontar cadeado; (extra) comparação feita.</p>
         </div>
 
-        <div class="aula">
-            <h3>Aula 9: Salvando Favoritos</h3>
+        <div class="aula" data-aula-id="basico-aula-9">
+            <div class="aula-header">
+                <input type="checkbox" onchange="toggleCompleted('basico-aula-9')">
+                <h3>Aula 9: Salvando Favoritos</h3>
+            </div>
             <p><strong>Objetivo:</strong> Aprender a salvar sites úteis.</p>
             <p><strong>Passo a Passo:</strong></p>
             <ul>
@@ -356,8 +403,11 @@
             <p><strong>Avaliação:</strong> Abrir favorito; (extra) favorito organizado.</p>
         </div>
 
-        <div class="aula">
-            <h3>Aula 10: E-mails Básicos</h3>
+        <div class="aula" data-aula-id="basico-aula-10">
+            <div class="aula-header">
+                <input type="checkbox" onchange="toggleCompleted('basico-aula-10')">
+                <h3>Aula 10: E-mails Básicos</h3>
+            </div>
             <p><strong>Objetivo:</strong> Entender e abrir uma conta de e-mail.</p>
             <p><strong>Passo a Passo:</strong></p>
             <ul>
@@ -377,8 +427,11 @@
             <p><strong>Avaliação:</strong> Conta criada; (extra) navegação no Gmail.</p>
         </div>
 
-        <div class="aula">
-            <h3>Aula 11: Enviando um E-mail</h3>
+        <div class="aula" data-aula-id="basico-aula-11">
+            <div class="aula-header">
+                <input type="checkbox" onchange="toggleCompleted('basico-aula-11')">
+                <h3>Aula 11: Enviando um E-mail</h3>
+            </div>
             <p><strong>Objetivo:</strong> Escrever e enviar um e-mail.</p>
             <p><strong>Passo a Passo:</strong></p>
             <ul>
@@ -399,8 +452,11 @@
             <p><strong>Avaliação:</strong> E-mail enviado; (extra) resposta enviada.</p>
         </div>
 
-        <div class="aula">
-            <h3>Aula 12: Senhas Seguras</h3>
+        <div class="aula" data-aula-id="basico-aula-12">
+            <div class="aula-header">
+                <input type="checkbox" onchange="toggleCompleted('basico-aula-12')">
+                <h3>Aula 12: Senhas Seguras</h3>
+            </div>
             <p><strong>Objetivo:</strong> Criar uma senha segura.</p>
             <p><strong>Passo a Passo:</strong></p>
             <ul>
@@ -421,8 +477,11 @@
             <p><strong>Avaliação:</strong> Senha segue regras; (extra) teste realizado.</p>
         </div>
 
-        <div class="aula">
-            <h3>Aula 13: Vídeos Online</h3>
+        <div class="aula" data-aula-id="basico-aula-13">
+            <div class="aula-header">
+                <input type="checkbox" onchange="toggleCompleted('basico-aula-13')">
+                <h3>Aula 13: Vídeos Online</h3>
+            </div>
             <p><strong>Objetivo:</strong> Assistir vídeos de forma segura.</p>
             <p><strong>Passo a Passo:</strong></p>
             <ul>
@@ -443,8 +502,11 @@
             <p><strong>Avaliação:</strong> Conseguir abrir vídeo; (extra) leitura de comentários.</p>
         </div>
 
-        <div class="aula">
-            <h3>Aula 14: Cuidado com Anúncios</h3>
+        <div class="aula" data-aula-id="basico-aula-14">
+            <div class="aula-header">
+                <input type="checkbox" onchange="toggleCompleted('basico-aula-14')">
+                <h3>Aula 14: Cuidado com Anúncios</h3>
+            </div>
             <p><strong>Objetivo:</strong> Reconhecer e evitar anúncios falsos.</p>
             <p><strong>Passo a Passo:</strong></p>
             <ul>
@@ -465,8 +527,11 @@
             <p><strong>Avaliação:</strong> Identificação correta; (extra) anúncio criado.</p>
         </div>
 
-        <div class="aula">
-            <h3>Aula 15: Revisão Prática</h3>
+        <div class="aula" data-aula-id="basico-aula-15">
+            <div class="aula-header">
+                <input type="checkbox" onchange="toggleCompleted('basico-aula-15')">
+                <h3>Aula 15: Revisão Prática</h3>
+            </div>
             <p><strong>Objetivo:</strong> Reforçar os aprendizados.</p>
             <p><strong>Passo a Passo:</strong></p>
             <ul>
@@ -487,8 +552,11 @@
             <p><strong>Avaliação:</strong> Execução das tarefas; (extra) favorito salvo.</p>
         </div>
 
-        <div class="aula">
-            <h3>Aula 16: Encerramento e Dicas Finais</h3>
+        <div class="aula" data-aula-id="basico-aula-16">
+            <div class="aula-header">
+                <input type="checkbox" onchange="toggleCompleted('basico-aula-16')">
+                <h3>Aula 16: Encerramento e Dicas Finais</h3>
+            </div>
             <p><strong>Objetivo:</strong> Consolidar e incentivar uso seguro.</p>
             <p><strong>Passo a Passo:</strong></p>
             <ul>
@@ -512,8 +580,11 @@
     <div class="nivel" id="intermediario">
         <h2>Nível Intermediário</h2>
 
-        <div class="aula">
-            <h3>Aula 1: Revisão de Conceitos Básicos</h3>
+        <div class="aula" data-aula-id="intermediario-aula-1">
+            <div class="aula-header">
+                <input type="checkbox" onchange="toggleCompleted('intermediario-aula-1')">
+                <h3>Aula 1: Revisão de Conceitos Básicos</h3>
+            </div>
             <p><strong>Objetivo:</strong> Reforçar uso de mouse, teclado e navegador.</p>
             <p><strong>Passo a Passo:</strong></p>
             <ul>
@@ -534,8 +605,11 @@
             <p><strong>Avaliação:</strong> Navegação fluida; (extra) uso de atalhos.</p>
         </div>
 
-        <div class="aula">
-            <h3>Aula 2: Navegação Avançada</h3>
+        <div class="aula" data-aula-id="intermediario-aula-2">
+            <div class="aula-header">
+                <input type="checkbox" onchange="toggleCompleted('intermediario-aula-2')">
+                <h3>Aula 2: Navegação Avançada</h3>
+            </div>
             <p><strong>Objetivo:</strong> Usar abas e histórico.</p>
             <p><strong>Passo a Passo:</strong></p>
             <ul>
@@ -555,8 +629,11 @@
             <p><strong>Avaliação:</strong> Uso de abas; (extra) histórico limpo.</p>
         </div>
 
-        <div class="aula">
-            <h3>Aula 3: Pesquisa Eficiente</h3>
+        <div class="aula" data-aula-id="intermediario-aula-3">
+            <div class="aula-header">
+                <input type="checkbox" onchange="toggleCompleted('intermediario-aula-3')">
+                <h3>Aula 3: Pesquisa Eficiente</h3>
+            </div>
             <p><strong>Objetivo:</strong> Refinar buscas no Google.</p>
             <p><strong>Passo a Passo:</strong></p>
             <ul>
@@ -576,8 +653,11 @@
             <p><strong>Avaliação:</strong> Resultados relevantes; (extra) uso de operador.</p>
         </div>
 
-        <div class="aula">
-            <h3>Aula 4: Etiqueta Digital</h3>
+        <div class="aula" data-aula-id="intermediario-aula-4">
+            <div class="aula-header">
+                <input type="checkbox" onchange="toggleCompleted('intermediario-aula-4')">
+                <h3>Aula 4: Etiqueta Digital</h3>
+            </div>
             <p><strong>Objetivo:</strong> Aprender normas online.</p>
             <p><strong>Passo a Passo:</strong></p>
             <ul>
@@ -597,8 +677,11 @@
             <p><strong>Avaliação:</strong> Comentário segue normas; (extra) debate educado.</p>
         </div>
 
-        <div class="aula">
-            <h3>Aula 5: Segurança Avançada - Phishing</h3>
+        <div class="aula" data-aula-id="intermediario-aula-5">
+            <div class="aula-header">
+                <input type="checkbox" onchange="toggleCompleted('intermediario-aula-5')">
+                <h3>Aula 5: Segurança Avançada - Phishing</h3>
+            </div>
             <p><strong>Objetivo:</strong> Identificar tentativas de golpe.</p>
             <p><strong>Passo a Passo:</strong></p>
             <ul>
@@ -619,8 +702,11 @@
             <p><strong>Avaliação:</strong> Identificação correta; (extra) e-mail criado.</p>
         </div>
 
-        <div class="aula">
-            <h3>Aula 6: Gerenciando Senhas</h3>
+        <div class="aula" data-aula-id="intermediario-aula-6">
+            <div class="aula-header">
+                <input type="checkbox" onchange="toggleCompleted('intermediario-aula-6')">
+                <h3>Aula 6: Gerenciando Senhas</h3>
+            </div>
             <p><strong>Objetivo:</strong> Criar e organizar senhas seguras.</p>
             <p><strong>Passo a Passo:</strong></p>
             <ul>
@@ -641,8 +727,11 @@
             <p><strong>Avaliação:</strong> Senhas atendem critérios; (extra) senha codificada.</p>
         </div>
 
-        <div class="aula">
-            <h3>Aula 7: Downloads Seguros</h3>
+        <div class="aula" data-aula-id="intermediario-aula-7">
+            <div class="aula-header">
+                <input type="checkbox" onchange="toggleCompleted('intermediario-aula-7')">
+                <h3>Aula 7: Downloads Seguros</h3>
+            </div>
             <p><strong>Objetivo:</strong> Baixar arquivos com segurança.</p>
             <p><strong>Passo a Passo:</strong></p>
             <ul>
@@ -663,8 +752,11 @@
             <p><strong>Avaliação:</strong> Download bem-sucedido; (extra) arquivo organizado.</p>
         </div>
 
-        <div class="aula">
-            <h3>Aula 8: Redes Sociais - Introdução</h3>
+        <div class="aula" data-aula-id="intermediario-aula-8">
+            <div class="aula-header">
+                <input type="checkbox" onchange="toggleCompleted('intermediario-aula-8')">
+                <h3>Aula 8: Redes Sociais - Introdução</h3>
+            </div>
             <p><strong>Objetivo:</strong> Entender uso básico de redes sociais.</p>
             <p><strong>Passo a Passo:</strong></p>
             <ul>
@@ -685,8 +777,11 @@
             <p><strong>Avaliação:</strong> Perfil configurado; (extra) amigos adicionados.</p>
         </div>
 
-        <div class="aula">
-            <h3>Aula 9: Compartilhamento Seguro</h3>
+        <div class="aula" data-aula-id="intermediario-aula-9">
+            <div class="aula-header">
+                <input type="checkbox" onchange="toggleCompleted('intermediario-aula-9')">
+                <h3>Aula 9: Compartilhamento Seguro</h3>
+            </div>
             <p><strong>Objetivo:</strong> Saber o que postar ou não.</p>
             <p><strong>Passo a Passo:</strong></p>
             <ul>
@@ -707,8 +802,11 @@
             <p><strong>Avaliação:</strong> Post segue regras; (extra) comentário seguro.</p>
         </div>
 
-        <div class="aula">
-            <h3>Aula 10: Vídeos e Streaming</h3>
+        <div class="aula" data-aula-id="intermediario-aula-10">
+            <div class="aula-header">
+                <input type="checkbox" onchange="toggleCompleted('intermediario-aula-10')">
+                <h3>Aula 10: Vídeos e Streaming</h3>
+            </div>
             <p><strong>Objetivo:</strong> Usar plataformas de vídeo avançadamente.</p>
             <p><strong>Passo a Passo:</strong></p>
             <ul>
@@ -729,8 +827,11 @@
             <p><strong>Avaliação:</strong> Playlist criada; (extra) link enviado.</p>
         </div>
 
-        <div class="aula">
-            <h3>Aula 11: Ferramentas de Produtividade</h3>
+        <div class="aula" data-aula-id="intermediario-aula-11">
+            <div class="aula-header">
+                <input type="checkbox" onchange="toggleCompleted('intermediario-aula-11')">
+                <h3>Aula 11: Ferramentas de Produtividade</h3>
+            </div>
             <p><strong>Objetivo:</strong> Introduzir ferramentas como Google Docs.</p>
             <p><strong>Passo a Passo:</strong></p>
             <ul>
@@ -751,8 +852,11 @@
             <p><strong>Avaliação:</strong> Documento editado; (extra) formatação aplicada.</p>
         </div>
 
-        <div class="aula">
-            <h3>Aula 12: Avaliando Fontes</h3>
+        <div class="aula" data-aula-id="intermediario-aula-12">
+            <div class="aula-header">
+                <input type="checkbox" onchange="toggleCompleted('intermediario-aula-12')">
+                <h3>Aula 12: Avaliando Fontes</h3>
+            </div>
             <p><strong>Objetivo:</strong> Identificar informações confiáveis.</p>
             <p><strong>Passo a Passo:</strong></p>
             <ul>
@@ -773,8 +877,11 @@
             <p><strong>Avaliação:</strong> Justificativa coerente; (extra) comparação feita.</p>
         </div>
 
-        <div class="aula">
-            <h3>Aula 13: Backup Básico</h3>
+        <div class="aula" data-aula-id="intermediario-aula-13">
+            <div class="aula-header">
+                <input type="checkbox" onchange="toggleCompleted('intermediario-aula-13')">
+                <h3>Aula 13: Backup Básico</h3>
+            </div>
             <p><strong>Objetivo:</strong> Salvar arquivos importantes.</p>
             <p><strong>Passo a Passo:</strong></p>
             <ul>
@@ -795,8 +902,11 @@
             <p><strong>Avaliação:</strong> Backup concluído; (extra) imagem salva.</p>
         </div>
 
-        <div class="aula">
-            <h3>Aula 14: Configurações de Privacidade</h3>
+        <div class="aula" data-aula-id="intermediario-aula-14">
+            <div class="aula-header">
+                <input type="checkbox" onchange="toggleCompleted('intermediario-aula-14')">
+                <h3>Aula 14: Configurações de Privacidade</h3>
+            </div>
             <p><strong>Objetivo:</strong> Ajustar privacidade em navegadores.</p>
             <p><strong>Passo a Passo:</strong></p>
             <ul>
@@ -817,8 +927,11 @@
             <p><strong>Avaliação:</strong> Configuração ajustada; (extra) pop-ups bloqueados.</p>
         </div>
 
-        <div class="aula">
-            <h3>Aula 15: Projeto Prático</h3>
+        <div class="aula" data-aula-id="intermediario-aula-15">
+            <div class="aula-header">
+                <input type="checkbox" onchange="toggleCompleted('intermediario-aula-15')">
+                <h3>Aula 15: Projeto Prático</h3>
+            </div>
             <p><strong>Objetivo:</strong> Aplicar os conhecimentos.</p>
             <p><strong>Passo a Passo:</strong></p>
             <ul>
@@ -839,8 +952,11 @@
             <p><strong>Avaliação:</strong> Tarefa completa; (extra) imagem adicionada.</p>
         </div>
 
-        <div class="aula">
-            <h3>Aula 16: Encerramento e Reflexão</h3>
+        <div class="aula" data-aula-id="intermediario-aula-16">
+            <div class="aula-header">
+                <input type="checkbox" onchange="toggleCompleted('intermediario-aula-16')">
+                <h3>Aula 16: Encerramento e Reflexão</h3>
+            </div>
             <p><strong>Objetivo:</strong> Consolidar e planejar próximos passos.</p>
             <p><strong>Passo a Passo:</strong></p>
             <ul>
@@ -873,8 +989,33 @@
                 intermediario.classList.add('active');
             }
         }
+
+        function toggleCompleted(aulaId) {
+            const aula = document.querySelector(`[data-aula-id="${aulaId}"]`);
+            const checkbox = aula.querySelector('input[type="checkbox"]');
+            if (checkbox.checked) {
+                aula.classList.add('completed');
+                localStorage.setItem(aulaId, 'completed');
+            } else {
+                aula.classList.remove('completed');
+                localStorage.removeItem(aulaId);
+            }
+        }
+
+        function loadCompletedState() {
+            const aulas = document.querySelectorAll('.aula');
+            aulas.forEach(aula => {
+                const aulaId = aula.getAttribute('data-aula-id');
+                if (localStorage.getItem(aulaId) === 'completed') {
+                    aula.classList.add('completed');
+                    aula.querySelector('input[type="checkbox"]').checked = true;
+                }
+            });
+        }
+
         window.onload = function() {
             showLevel('basico');
+            loadCompletedState();
         };
     </script>
 </body>
