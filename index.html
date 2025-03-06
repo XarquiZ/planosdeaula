@@ -2,71 +2,143 @@
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Planos de Aula - Iniciação Digital</title>
     <style>
         body {
             font-family: Arial, sans-serif;
-            margin: 20mm;
-            font-size: 12pt;
-            line-height: 1.4;
+            margin: 0;
+            padding: 0;
             background-color: #FFFFFF;
             color: #1C2526;
+            line-height: 1.4;
         }
         h1 {
-            font-size: 18pt;
+            font-size: 2rem;
             text-align: center;
             color: #C72A81;
             border-bottom: 2px solid #F5A623;
-            padding-bottom: 5mm;
+            padding: 1rem 0;
+            margin: 0;
         }
-        h2 {
-            font-size: 14pt;
-            color: #F5A623;
+        .nav-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            padding: 1rem;
             background-color: #1C2526;
-            padding: 3mm;
-            border-radius: 5px;
-            color: #FFFFFF;
         }
-        h3 {
-            font-size: 12pt;
-            color: #C72A81;
-            border-left: 4px solid #F5A623;
-            padding-left: 5mm;
+        .nav-buttons button {
+            padding: 0.5rem 1rem;
+            font-size: 1rem;
+            color: #FFFFFF;
+            background-color: #C72A81;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .nav-buttons button:hover {
+            background-color: #F5A623;
         }
         .nivel {
-            margin-bottom: 20mm;
+            display: none;
+            padding: 1rem;
+        }
+        .nivel.active {
+            display: block;
         }
         .aula {
             border: 1px solid #C72A81;
-            padding: 5mm;
-            margin-bottom: 10mm;
+            padding: 1rem;
+            margin-bottom: 1rem;
             border-radius: 5px;
             background-color: #FFFFFF;
         }
+        h2 {
+            font-size: 1.5rem;
+            color: #F5A623;
+            background-color: #1C2526;
+            padding: 0.5rem;
+            border-radius: 5px;
+            color: #FFFFFF;
+            margin-top: 0;
+        }
+        h3 {
+            font-size: 1.2rem;
+            color: #C72A81;
+            border-left: 4px solid #F5A623;
+            padding-left: 0.5rem;
+            margin: 0.5rem 0;
+        }
         ul {
-            margin: 5mm 0;
-            padding-left: 10mm;
+            margin: 0.5rem 0;
+            padding-left: 2rem;
         }
         p strong {
             color: #F5A623;
         }
         @media print {
-            body {
-                margin: 0;
+            .nav-buttons {
+                display: none;
             }
             .nivel {
+                display: block;
                 page-break-after: always;
             }
             .aula {
                 border: 1px solid #C72A81;
             }
         }
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 1.5rem;
+            }
+            h2 {
+                font-size: 1.2rem;
+            }
+            h3 {
+                font-size: 1rem;
+            }
+            .nav-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            .nav-buttons button {
+                width: 80%;
+                margin-bottom: 0.5rem;
+            }
+            .aula {
+                padding: 0.5rem;
+            }
+        }
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 1.2rem;
+            }
+            h2 {
+                font-size: 1rem;
+            }
+            h3 {
+                font-size: 0.9rem;
+            }
+            .aula {
+                margin-bottom: 0.5rem;
+            }
+            ul {
+                padding-left: 1rem;
+            }
+        }
     </style>
 </head>
 <body>
     <h1>Planos de Aula - Iniciação Digital</h1>
+    <div class="nav-buttons">
+        <button onclick="showLevel('basico')">Nível Básico</button>
+        <button onclick="showLevel('intermediario')">Nível Intermediário</button>
+    </div>
 
-    <div class="nivel">
+    <div class="nivel" id="basico">
         <h2>Nível Básico</h2>
 
         <div class="aula">
@@ -417,8 +489,8 @@
         </div>
     </div>
 
-    <div class="nivel">
-        <h2>Nível Intermédio</h2>
+    <div class="nivel" id="intermediario">
+        <h2>Nível Intermediário</h2>
 
         <div class="aula">
             <h3>Aula 1: Revisão de Conceitos Básicos</h3>
@@ -768,5 +840,23 @@
             <p><strong>Avaliação:</strong> Participação ativa; (extra) regras criadas.</p>
         </div>
     </div>
+
+    <script>
+        function showLevel(level) {
+            const basico = document.getElementById('basico');
+            const intermediario = document.getElementById('intermediario');
+            if (level === 'basico') {
+                basico.classList.add('active');
+                intermediario.classList.remove('active');
+            } else {
+                basico.classList.remove('active');
+                intermediario.classList.add('active');
+            }
+        }
+        // Carrega o nível básico por padrão ao abrir a página
+        window.onload = function() {
+            showLevel('basico');
+        };
+    </script>
 </body>
 </html>
