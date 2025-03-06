@@ -13,6 +13,14 @@
             color: #1C2526;
             line-height: 1.4;
         }
+        .logo-container {
+            text-align: center;
+            padding: 1rem 0;
+        }
+        .logo-container img {
+            max-width: 200px;
+            height: auto;
+        }
         h1 {
             font-size: 2rem;
             text-align: center;
@@ -79,6 +87,9 @@
             color: #F5A623;
         }
         @media print {
+            .logo-container {
+                display: block;
+            }
             .nav-buttons {
                 display: none;
             }
@@ -91,6 +102,9 @@
             }
         }
         @media (max-width: 768px) {
+            .logo-container img {
+                max-width: 150px;
+            }
             h1 {
                 font-size: 1.5rem;
             }
@@ -113,6 +127,9 @@
             }
         }
         @media (max-width: 480px) {
+            .logo-container img {
+                max-width: 120px;
+            }
             h1 {
                 font-size: 1.2rem;
             }
@@ -132,6 +149,9 @@
     </style>
 </head>
 <body>
+    <div class="logo-container">
+        <img src="LOGO_1-8.png" alt="Logo Iniciação Digital">
+    </div>
     <h1>Planos de Aula - Iniciação Digital</h1>
     <div class="nav-buttons">
         <button onclick="showLevel('basico')">Nível Básico</button>
@@ -853,7 +873,6 @@
                 intermediario.classList.add('active');
             }
         }
-        // Carrega o nível básico por padrão ao abrir a página
         window.onload = function() {
             showLevel('basico');
         };
